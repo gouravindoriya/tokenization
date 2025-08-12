@@ -9,9 +9,10 @@ function App() {
   // const vocab: Record<string, number> = {};
   const vocabRef = useRef<Record<string, number>>({});
 const idCounterRef = useRef(0);
-  const ref=useRef(null)
-  const [regex,setregex]=useState(/@\w+|#\w+|[\u0900-\u097F]+|\p{Extended_Pictographic}|\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b|\w+(?:'\w+)?|[.,!?;]|\s+/gu)
-  const [tokenData, settokenData] = useState(customEncode("hey gpt"));
+  // const ref=useRef(null)
+  const [regex]=useState(/@\w+|#\w+|[\u0900-\u097F]+|\p{Extended_Pictographic}|\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b|\w+(?:'\w+)?|[.,!?;]|\s+/gu)
+  const [tokenData, settokenData] = useState(customEncode("The quick brown fox jumps over 13 lazy dogs, happily coding in 2025 🚀 #AI"));
+
   function customEncode(text: string) {
   const tokens = text.match(regex) || [];
 
@@ -32,14 +33,11 @@ const idCounterRef = useRef(0);
    for(let item in Object(vocabRef.current)){
     arr[Object(vocabRef.current)[item]] = item;
    }
-   
     //  console.log(arr);
      let str="";
      ids.forEach(id=>{
       str+=arr[id]
      })
-
-
     return str;
   }
 
@@ -56,7 +54,7 @@ const idCounterRef = useRef(0);
       </div>
       <div className="grid grid-cols-4 bg-gray-100 min-h-[30vh] gap-3 p-4">
 
-        {/* Header */}
+       
 
 
         {/* Textarea Section */}
@@ -73,7 +71,7 @@ const idCounterRef = useRef(0);
           onClick={()=>{
             let obj=Object(ref)
             
-            setregex(RegExp(obj.current.value)||regex)
+            setregex(RegExp(obj.current.value.trim())||regex)
           }}
           >
 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white  rounded-md group-hover:bg-transparent ">
@@ -82,6 +80,11 @@ Set Regex
 </button>
 
             </div> */}
+
+
+
+
+
           <label className="text-base font-medium text-gray-800">Your message</label>
           <textarea
             className="w-full min-h-[150px] p-4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 
