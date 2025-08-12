@@ -57,3 +57,10 @@ npm run dev
 - Real-time tokenization preview as you type.
 - Copy tokens to clipboard.
 - Dark & Light mode UI.
+
+
+## preview 
+![alt text](image-1.png)
+ 
+second update 
+![alt text](image-2.png)
